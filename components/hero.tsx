@@ -12,6 +12,16 @@ export default function Hero() {
     setMounted(true)
   }, [])
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects')
+    if (projectsSection) {
+      projectsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
   if (!mounted) return null
 
   return (
@@ -112,6 +122,7 @@ export default function Hero() {
             <Button
               size="lg"
               className="bg-electric-blue hover:bg-neon-green text-background text-lg px-8 py-6 transition-all duration-300 group"
+              onClick={scrollToProjects}
             >
               See Our Work
               <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

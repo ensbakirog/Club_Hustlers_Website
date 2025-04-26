@@ -27,78 +27,17 @@ export default function Projects() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce solution with real-time inventory and personalized recommendations.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "LuckFlix",
+      description: "A movie discovery app that helps users find their next favorite film with a spin of luck feature and genre-based recommendations.",
+      image: "/luckflix-project.png",
+      tags: ["Flutter", "Dart", "TMDB API"],
       contributors: ["both"],
       links: {
         demo: "#",
         code: "#",
         case: "#",
       },
-    },
-    {
-      id: 2,
-      title: "Portfolio Generator",
-      description: "A tool that helps creatives build stunning portfolios without coding knowledge.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      contributors: ["name1", "name2"],
-      links: {
-        demo: "#",
-        code: "#",
-      },
-    },
-    {
-      id: 3,
-      title: "Health Dashboard",
-      description: "An interactive dashboard for tracking health metrics with data visualization.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "D3.js", "Firebase"],
-      contributors: ["name2"],
-      links: {
-        demo: "#",
-        case: "#",
-      },
-    },
-    {
-      id: 4,
-      title: "Brand Identity System",
-      description: "A comprehensive brand system for a tech startup with digital and print assets.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Branding", "UI Design", "Design System"],
-      contributors: ["name1"],
-      links: {
-        demo: "#",
-        case: "#",
-      },
-    },
-    {
-      id: 5,
-      title: "Social Media App",
-      description: "A niche social platform connecting professionals in creative industries.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React Native", "GraphQL", "AWS"],
-      contributors: ["both"],
-      links: {
-        demo: "#",
-        code: "#",
-        case: "#",
-      },
-    },
-    {
-      id: 6,
-      title: "Interactive Data Visualization",
-      description: "Complex data sets transformed into intuitive, interactive visualizations.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["D3.js", "SVG", "TypeScript"],
-      contributors: ["name2"],
-      links: {
-        demo: "#",
-        code: "#",
-      },
-    },
+    }
   ]
 
   const getContributorColors = (contributors: ("name1" | "name2" | "both")[]) => {
@@ -115,7 +54,7 @@ export default function Projects() {
 
   return (
     <section id="projects" ref={ref} className="w-full py-20 bg-background">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -124,12 +63,12 @@ export default function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Projects</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-neon-green to-vibrant-orange rounded-full mb-6"></div>
-          <p className="max-w-[800px] text-muted-foreground">
+          <p className="max-w-[600px] text-muted-foreground">
             A showcase of our collaborative and individual work spanning various industries and technologies.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-2xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -139,20 +78,22 @@ export default function Projects() {
               className="group relative bg-background-alt rounded-xl overflow-hidden border border-border hover:border-muted-foreground/50 transition-all duration-300"
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-64 md:h-80 overflow-hidden">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-contain md:object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background-alt to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
 
-                {/* Contributor Badge */}
-                <div
-                  className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium text-background ${getContributorColors(project.contributors)}`}
-                >
-                  {getContributorNames(project.contributors)}
-                </div>
+                {/* Contributor Badge - removed for LuckFlix project */}
+                {project.id !== 1 && (
+                  <div
+                    className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium text-background ${getContributorColors(project.contributors)}`}
+                  >
+                    {getContributorNames(project.contributors)}
+                  </div>
+                )}
               </div>
 
               {/* Project Content */}
