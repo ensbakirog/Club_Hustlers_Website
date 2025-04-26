@@ -32,10 +32,18 @@ export default function AboutUs() {
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
-                <Image src="/Berhan.jpeg" alt="Berhan Berk Akgün" fill className="object-cover rounded-xl" />
+                <div className="relative w-full h-full scale-150">
+                  <Image 
+                    src="/Berhan.jpeg" 
+                    alt="Berhan Berk Akgün" 
+                    fill 
+                    className="object-cover rounded-xl" 
+                    style={{ objectPosition: "10px center" }}
+                  />
+                </div>
               </div>
               <div className="absolute -bottom-3 -right-3 w-12 h-12 rounded-full bg-electric-blue flex items-center justify-center">
-                <Palette className="w-6 h-6 text-background" />
+                <Code className="w-6 h-6 text-background" />
               </div>
             </div>
 
