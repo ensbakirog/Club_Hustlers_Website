@@ -22,13 +22,13 @@ export default function AboutUs() {
           <div className="w-20 h-1 bg-gradient-to-r from-electric-blue to-hot-pink rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-24 md:gap-40">
           {/* First Person */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center md:items-start"
+            className="flex flex-col items-center text-center"
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
@@ -49,7 +49,6 @@ export default function AboutUs() {
 
             <h3 className="text-2xl font-bold mb-2 text-electric-blue">Berhan Berk Akgün</h3>
             <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Entrepreneur</p>
-
           </motion.div>
 
           {/* Second Person */}
@@ -57,7 +56,7 @@ export default function AboutUs() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col items-center md:items-start"
+            className="flex flex-col items-center text-center"
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
@@ -70,7 +69,6 @@ export default function AboutUs() {
 
             <h3 className="text-2xl font-bold mb-2 text-hot-pink">Enes Bakıroğlu</h3>
             <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Entrepreneur</p>
-
           </motion.div>
         </div>
       </div>
