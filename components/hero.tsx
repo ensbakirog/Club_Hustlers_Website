@@ -8,6 +8,8 @@ import { ArrowRight } from "lucide-react"
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const mousePos = useRef({ x: -100, y: -100 }); // Initialize off-screen
+  const interactionRadius = 75; // Pixels - Adjust for larger/smaller interaction area
 
   // Matrix Effect Logic
   const drawMatrix = useCallback(() => {
@@ -44,7 +46,7 @@ export default function Hero() {
 
     let animationFrameId: number;
     let lastTime = 0;
-    const interval = 75; // ms - Increase this value to slow down further (e.g., 100, 150)
+    const interval = 75; // ms
 
     const draw = (timestamp: number) => {
       const deltaTime = timestamp - lastTime;
@@ -57,19 +59,39 @@ export default function Hero() {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.1)' // Use background color from theme if possible
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-        ctx.fillStyle = '#0F0' // Green text
         ctx.font = `${fontSize}px monospace`
+
+        const currentMouseX = mousePos.current.x;
+        const currentMouseY = mousePos.current.y;
 
         // Loop over drops
         for (let i = 0; i < drops.length; i++) {
           // Get random character
           const text = charactersArray[Math.floor(Math.random() * charactersArray.length)]
+          const charX = i * fontSize;
+          const charY = drops[i] * fontSize;
+
+          // Calculate distance from mouse
+          const dx = charX - currentMouseX;
+          const dy = charY - currentMouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          // Set color based on distance
+          if (distance < interactionRadius) {
+            // Make characters near the mouse brighter/white
+            const brightness = Math.max(0, 1 - distance / interactionRadius); // Closer = brighter
+            // ctx.fillStyle = `rgba(200, 255, 200, ${brightness})`; // Brighter green option
+             ctx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.8 + 0.2})`; // White with fade
+          } else {
+            ctx.fillStyle = '#0F0'; // Default green
+          }
+
           // Draw character
-          ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+          ctx.fillText(text, charX, charY)
 
           // Send drop back to top randomly after it has crossed the screen
           // or randomly reset it to make streams appear at different times
-          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          if (charY > canvas.height && Math.random() > 0.975) {
             drops[i] = 0
           }
 
@@ -98,6 +120,12 @@ export default function Hero() {
     setMounted(true)
     let cleanupDraw: (() => void) | undefined;
 
+    const handleMouseMove = (event: MouseEvent) => {
+        mousePos.current = { x: event.clientX, y: event.clientY };
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+
     // Delay initial draw slightly to ensure layout is stable
     const timerId = setTimeout(() => {
         cleanupDraw = drawMatrix();
@@ -117,6 +145,7 @@ export default function Hero() {
         clearTimeout(timerId); // Clear the timeout if component unmounts quickly
         cleanupDraw?.(); // Call the cleanup from drawMatrix if it exists
         window.removeEventListener('resize', handleResize)
+        window.removeEventListener('mousemove', handleMouseMove); // Remove mousemove listener
     }
   }, [drawMatrix]) // Add drawMatrix to dependency array
 
