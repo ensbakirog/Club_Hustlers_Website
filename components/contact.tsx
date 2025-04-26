@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Twitter, Instagram, Dribbble, Send, CheckCircle } from "lucide-react"
+import { Github, Linkedin, Send, CheckCircle } from "lucide-react"
 
 export default function Contact() {
   const ref = useRef(null)
@@ -25,9 +25,6 @@ export default function Contact() {
   const socialLinks = [
     { icon: <Github className="h-5 w-5" />, url: "#", color: "hover:text-white" },
     { icon: <Linkedin className="h-5 w-5" />, url: "#", color: "hover:text-electric-blue" },
-    { icon: <Twitter className="h-5 w-5" />, url: "#", color: "hover:text-electric-blue" },
-    { icon: <Instagram className="h-5 w-5" />, url: "#", color: "hover:text-hot-pink" },
-    { icon: <Dribbble className="h-5 w-5" />, url: "#", color: "hover:text-hot-pink" },
   ]
 
   return (
@@ -146,62 +143,98 @@ export default function Contact() {
                 your next big idea.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-electric-blue"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
+              <div className="space-y-6">
+                {/* First Email */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 text-electric-blue"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="font-medium">ensbakirog@gmail.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium">hello@duoportfolio.com</p>
+                  <div className="ml-12">
+                    <h4 className="text-sm font-bold mb-2">Follow Me</h4>
+                    <div className="flex space-x-3">
+                      <motion.a
+                        href="https://github.com/ensbakirog"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ y: -5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-white transition-colors duration-300"
+                      >
+                        <Github className="h-4 w-4" />
+                      </motion.a>
+                      <motion.a
+                        href="https://www.linkedin.com/in/enesbakiroglu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ y: -5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-electric-blue transition-colors duration-300"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </motion.a>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-hot-pink"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                {/* Second Email */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 text-hot-pink"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="font-medium">berhanberkakgun@gmail.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Location</p>
-                    <p className="font-medium">San Francisco, CA</p>
+                  <div className="ml-12">
+                    <h4 className="text-sm font-bold mb-2">Follow Me</h4>
+                    <div className="flex space-x-3">
+                      <motion.a
+                        href="https://github.com/99berk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ y: -5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-white transition-colors duration-300"
+                      >
+                        <Github className="h-4 w-4" />
+                      </motion.a>
+                      <motion.a
+                        href="https://www.linkedin.com/in/berhanberkakgun"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ y: -5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-electric-blue transition-colors duration-300"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </motion.a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((link, index) => (
-                  <motion.a
-                    key={index}
-                    href={link.url}
-                    whileHover={{ y: -5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className={`w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground ${link.color} transition-colors duration-300`}
-                  >
-                    {link.icon}
-                  </motion.a>
-                ))}
               </div>
             </div>
 
