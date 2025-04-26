@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Code, Palette } from "lucide-react"
+import Image from 'next/image'
 
 export default function AboutUs() {
   const ref = useRef(null)
@@ -31,7 +32,7 @@ export default function AboutUs() {
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
-                <img src="/placeholder.svg?height=192&width=192" alt="Berhan Berk Akgün" className="w-full h-full object-cover" />
+                <Image src="/Berhan.jpeg" alt="Berhan Berk Akgün" fill className="object-cover rounded-xl" />
               </div>
               <div className="absolute -bottom-3 -right-3 w-12 h-12 rounded-full bg-electric-blue flex items-center justify-center">
                 <Palette className="w-6 h-6 text-background" />
@@ -39,7 +40,7 @@ export default function AboutUs() {
             </div>
 
             <h3 className="text-2xl font-bold mb-2 text-electric-blue">Berhan Berk Akgün</h3>
-            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">UI/UX Designer</p>
+            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Full-Stack Developer</p>
 
             <p className="text-base md:text-left text-center mb-6">
               A passionate designer with an eye for detail and a mind for user experience. Specializes in creating
@@ -71,7 +72,7 @@ export default function AboutUs() {
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
-                <img src="/placeholder.svg?height=192&width=192" alt="Enes Bakıroğlu" className="w-full h-full object-cover" />
+                <Image src="/Enes.jpeg" alt="Enes Bakıroğlu" fill className="object-cover rounded-xl" />
               </div>
               <div className="absolute -bottom-3 -right-3 w-12 h-12 rounded-full bg-hot-pink flex items-center justify-center">
                 <Code className="w-6 h-6 text-background" />
