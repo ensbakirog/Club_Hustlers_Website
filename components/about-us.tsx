@@ -33,11 +33,11 @@ export default function AboutUs() {
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
                 <div className="relative w-full h-full scale-150">
-                  <Image 
-                    src="/Berhan.jpeg" 
-                    alt="Berhan Berk Akgün" 
-                    fill 
-                    className="object-cover rounded-xl" 
+                  <Image
+                    src="/Berhan.jpeg"
+                    alt="Berhan Berk Akgün"
+                    fill
+                    className="object-cover rounded-xl"
                     style={{ objectPosition: "10px center" }}
                   />
                 </div>
@@ -48,28 +48,8 @@ export default function AboutUs() {
             </div>
 
             <h3 className="text-2xl font-bold mb-2 text-electric-blue">Berhan Berk Akgün</h3>
-            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Computer Engineer</p>
+            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Entrepreneur</p>
 
-            <p className="text-base md:text-left text-center mb-6">
-              A computer engineer specializing in software development, data analysis, and machine learning.
-              Experienced in developing attack detection models for SCADA systems and backend development.
-              Published academic papers in the field and passionate about innovative solutions.
-            </p>
-
-            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-electric-blue/30 text-electric-blue">
-                Python
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-electric-blue/30 text-electric-blue">
-                Flutter
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-electric-blue/30 text-electric-blue">
-                Machine Learning
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-electric-blue/30 text-electric-blue">
-                Swift
-              </span>
-            </div>
           </motion.div>
 
           {/* Second Person */}
@@ -89,27 +69,8 @@ export default function AboutUs() {
             </div>
 
             <h3 className="text-2xl font-bold mb-2 text-hot-pink">Enes Bakıroğlu</h3>
-            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Full-Stack Developer</p>
+            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Entrepreneur</p>
 
-            <p className="text-base md:text-left text-center mb-6">
-              A skilled developer who turns designs into functional, responsive experiences. Combines technical
-              expertise with creative problem-solving to build robust, scalable applications.
-            </p>
-
-            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-hot-pink/30 text-hot-pink">
-                React
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-hot-pink/30 text-hot-pink">
-                Node.js
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-hot-pink/30 text-hot-pink">
-                TypeScript
-              </span>
-              <span className="px-3 py-1 text-xs rounded-full bg-background-alt2 border border-hot-pink/30 text-hot-pink">
-                Next.js
-              </span>
-            </div>
           </motion.div>
         </div>
       </div>
