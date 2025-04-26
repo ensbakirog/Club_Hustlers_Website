@@ -20,6 +20,41 @@ export default function Skills() {
 
   const skills: Skill[] = [
     {
+      name: "Python",
+      icon: <Code className="h-6 w-6" />,
+      color: "electric-blue",
+      person: "name1",
+      level: 90,
+    },
+    {
+      name: "C/C++",
+      icon: <Code className="h-6 w-6" />,
+      color: "electric-blue",
+      person: "both",
+      level: 85,
+    },
+    {
+      name: "Machine Learning",
+      icon: <Cpu className="h-6 w-6" />,
+      color: "electric-blue",
+      person: "name1",
+      level: 90,
+    },
+    {
+      name: "Swift",
+      icon: <Smartphone className="h-6 w-6" />,
+      color: "electric-blue",
+      person: "name1",
+      level: 80,
+    },
+    {
+      name: "Data Analysis",
+      icon: <LineChart className="h-6 w-6" />,
+      color: "electric-blue",
+      person: "name1",
+      level: 85,
+    },
+    {
       name: "UI/UX Design",
       icon: <Palette className="h-6 w-6" />,
       color: "electric-blue",
@@ -88,6 +123,13 @@ export default function Skills() {
       color: "vibrant-orange",
       person: "both",
       level: 95,
+    },
+    {
+      name: "Flutter",
+      icon: <Smartphone className="h-6 w-6" />,
+      color: "neon-green",
+      person: "both",
+      level: 80,
     },
   ]
 
