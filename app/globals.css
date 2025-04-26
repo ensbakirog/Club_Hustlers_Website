@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --background-alt: 240 10% 5.9%;
+    --background-alt2: 240 10% 7.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+
+    /* Custom vibrant colors */
+    --electric-blue: 195 100% 50%;
+    --neon-green: 142 100% 50%;
+    --hot-pink: 330 100% 50%;
+    --vibrant-orange: 30 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom color utility classes */
+.text-electric-blue {
+  color: hsl(var(--electric-blue));
+}
+.text-neon-green {
+  color: hsl(var(--neon-green));
+}
+.text-hot-pink {
+  color: hsl(var(--hot-pink));
+}
+.text-vibrant-orange {
+  color: hsl(var(--vibrant-orange));
+}
+
+.bg-electric-blue {
+  background-color: hsl(var(--electric-blue));
+}
+.bg-neon-green {
+  background-color: hsl(var(--neon-green));
+}
+.bg-hot-pink {
+  background-color: hsl(var(--hot-pink));
+}
+.bg-vibrant-orange {
+  background-color: hsl(var(--vibrant-orange));
+}
+
+.border-electric-blue {
+  border-color: hsl(var(--electric-blue));
+}
+.border-neon-green {
+  border-color: hsl(var(--neon-green));
+}
+.border-hot-pink {
+  border-color: hsl(var(--hot-pink));
+}
+.border-vibrant-orange {
+  border-color: hsl(var(--vibrant-orange));
+}
+
+/* Opacity variants */
+.bg-electric-blue\/10 {
+  background-color: hsla(var(--electric-blue), 0.1);
+}
+.bg-neon-green\/10 {
+  background-color: hsla(var(--neon-green), 0.1);
+}
+.bg-hot-pink\/10 {
+  background-color: hsla(var(--hot-pink), 0.1);
+}
+.bg-vibrant-orange\/10 {
+  background-color: hsla(var(--vibrant-orange), 0.1);
+}
+.bg-electric-blue\/20 {
+  background-color: hsla(var(--electric-blue), 0.2);
+}
+.bg-neon-green\/20 {
+  background-color: hsla(var(--neon-green), 0.2);
+}
+.bg-hot-pink\/20 {
+  background-color: hsla(var(--hot-pink), 0.2);
+}
+.bg-vibrant-orange\/20 {
+  background-color: hsla(var(--vibrant-orange), 0.2);
+}
