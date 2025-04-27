@@ -29,7 +29,7 @@ export default function Projects() {
       id: 1,
       title: "LuckFlix",
       description: "A movie discovery app that helps users find their next favorite film with a spin of luck feature and genre-based recommendations.",
-      image: "/luckflix-project.png",
+      image: "./luckflix-project.png",
       tags: ["Flutter", "Dart", "TMDB API"],
       contributors: ["both"],
       links: {
