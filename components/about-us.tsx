@@ -31,38 +31,60 @@ export default function AboutUs() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-12">
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
-              <Image 
-                src="/duo/duo-1.jpg" 
-                alt="The Duo working together" 
-                width={500} 
-                height={300} 
+              <Image
+                src="/duo/duo-1.jpg"
+                alt="The Duo working together"
+                width={500}
+                height={300}
                 className="w-full h-64 object-cover"
               />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
-              <Image 
-                src="/duo/duo-2.jpg" 
-                alt="The Duo at conference" 
-                width={500} 
-                height={300} 
+              <Image
+                src="/duo/duo-2.jpg"
+                alt="The Duo at conference"
+                width={500}
+                height={300}
                 className="w-full h-64 object-cover"
               />
             </div>
           </div>
-          
-          <p className="text-lg text-center mb-12 text-muted-foreground">
-            Our journey began with a shared vision to create meaningful digital experiences.
-            Through countless brainstorming sessions, late-night coding marathons, and
-            collaborative design explorations, we've forged a dynamic partnership that combines
-            technical expertise with creative vision.
+
+          <p className="text-lg text-center mb-6 text-muted-foreground">
+            Everything 🕶️ started in 2022 when we met at one of the world's most prestigious software schools, **Ecole 42**.
+            In this unique environment, we learned not only how to code but also how to solve problems, think creatively,
+            and push beyond the boundaries imposed by the system. 🖥️⚡
           </p>
-          
+
+          {/* New GIF section */}
+          <div className="grid grid-cols-1 gap-6 mb-12">
+            <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300 mx-auto w-full max-w-lg">
+              <div className="relative" style={{ aspectRatio: '16/9', maxHeight: '300px' }}>
+                <Image
+                  src="/duo/duo-gif.gif"
+                  alt="The Duo in action"
+                  fill
+                  className="object-contain"
+                  priority
+                  unoptimized={true} // Important for GIFs to animate properly
+                />
+              </div>
+            </div>
+          </div>
+
+          <p className="text-lg text-center mb-12 text-muted-foreground">
+            Just like Neo in the Matrix, we faced a choice: take the "blue pill" and stay in the safe but limited world of an ordinary life,
+            or take the "red pill" and step into the unknown. 🔴💊 We chose the unknown. Because we knew that true freedom begins beyond our comfort zones.
+            This choice was not just a decision; it was the first step toward reaching our full potential. 🚀
+          </p>
+
+          {/* Restored image section */}
           <div className="grid grid-cols-1 gap-6 mb-12">
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300 mx-auto w-full max-w-2xl">
               <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/duo/duo-3.jpg" 
-                  alt="Collaboration session" 
+                <Image
+                  src="/duo/duo-3.jpg"
+                  alt="Collaboration session"
                   fill
                   className="object-contain"
                   priority
@@ -70,11 +92,21 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-          
+
           <p className="text-lg text-center mb-12 text-muted-foreground">
-            We complement each other's strengths - where one excels in pixel-perfect design and user experience,
-            the other brings robust technical architecture and innovative development solutions.
-            This balance allows us to tackle complex challenges from multiple perspectives.
+            Over two years, we generated countless ideas 🧠, developed projects, and learned something new from each one.
+            While some ideas never came to life, the process taught us how to break the chains of the system.
+            Every failure made us stronger and more determined. 🦾
+          </p>
+
+          <p className="text-lg text-center mb-12 text-muted-foreground">
+            Now, as a result of all these experiences, we are working on a project that excites us: **LuckFlix**. 🎬🍀
+            This project is not just an idea; it is a step toward creating our own reality.
+            Because we believe that limits are nothing but an illusion, and we are here to break that illusion. 🌀🔥
+          </p>
+
+          <p className="text-lg text-center mb-12 text-muted-foreground">
+            And now, we are here to bring your projects to life. We are ready to work together to turn your dreams into reality. 🌟💼
           </p>
         </motion.div>
 
