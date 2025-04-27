@@ -1,0 +1,36 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Ana branch'e push yapıldığında çalışır
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Reponun Checkout yapılması
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # 2. Node.js ortamının kurulması
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Gerekli Node.js versiyonu
+
+      # 3. Bağımlılıkların yüklenmesi
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Projenin build edilmesi
+      - name: Build Project
+        run: npm run build
+
+      # 5. Deploy işlemi (örneğin, GitHub Pages veya başka bir platforma)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Build edilen dosyaların konumu
