@@ -41,7 +41,7 @@ export default function AboutUs() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <Image
-                src="/duo/duo-2.jpg"
+                src="https://ensbakirog.github.io/Duo_Portfolio/public/duo/duo-2.jpg"
                 alt="The Duo at conference"
                 width={500}
                 height={300}
