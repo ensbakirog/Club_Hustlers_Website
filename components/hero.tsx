@@ -4,12 +4,14 @@ import { useEffect, useState, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"; // Import useIsMobile
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mousePos = useRef({ x: -100, y: -100 }); // Initialize off-screen
   const interactionRadius = 75; // Pixels - Adjust for larger/smaller interaction area
+  const isMobile = useIsMobile(); // Use the hook
 
   // Matrix Effect Logic
   const drawMatrix = useCallback(() => {
@@ -137,17 +139,23 @@ export default function Hero() {
         cleanupDraw = drawMatrix();
     }
 
-    window.addEventListener('resize', handleResize)
+    // Only add resize listener on non-mobile devices
+    if (!isMobile) {
+      window.addEventListener('resize', handleResize)
+    }
 
     // Cleanup function for effect and event listener
     return () => {
         console.log("Hero component unmounting, cleaning up effect"); // Debug log
         clearTimeout(timerId); // Clear the timeout if component unmounts quickly
         cleanupDraw?.(); // Call the cleanup from drawMatrix if it exists
-        window.removeEventListener('resize', handleResize)
+        // Only remove listener if it was added
+        if (!isMobile) {
+          window.removeEventListener('resize', handleResize)
+        }
         window.removeEventListener('mousemove', handleMouseMove); // Remove mousemove listener
     }
-  }, [drawMatrix]) // Add drawMatrix to dependency array
+  }, [drawMatrix, isMobile]) // Add isMobile to dependency array
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects')
