@@ -156,7 +156,7 @@ export default function AboutUs() {
             </div>
 
             <h3 className="text-2xl font-bold mb-2 text-hot-pink">Enes Bakıroğlu</h3>
-            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Designer & Developer</p>
+            <p className="text-sm uppercase tracking-wider mb-4 text-muted-foreground">Entrepreneur</p>
           </motion.div>
         </div>
       </div>
