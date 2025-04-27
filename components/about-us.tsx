@@ -32,7 +32,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-12">
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <Image
-                src="/duo/duo-1.jpg"
+                src="./duo/duo-1.jpg"
                 alt="The Duo working together"
                 width={500}
                 height={300}
@@ -41,7 +41,7 @@ export default function AboutUs() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <Image
-                src="/duo/duo-2.jpg"
+                src="./duo/duo-2.jpg"
                 alt="The Duo at conference"
                 width={500}
                 height={300}
@@ -61,7 +61,7 @@ export default function AboutUs() {
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300 mx-auto w-full max-w-lg">
               <div className="relative" style={{ aspectRatio: '16/9', maxHeight: '300px' }}>
                 <Image
-                  src="/duo/duo-gif.gif"
+                  src="./duo/duo-gif.gif"
                   alt="The Duo in action"
                   fill
                   className="object-contain"
@@ -83,7 +83,7 @@ export default function AboutUs() {
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300 mx-auto w-full max-w-2xl">
               <div className="relative" style={{ aspectRatio: '4/3' }}>
                 <Image
-                  src="/duo/duo-3.jpg"
+                  src="./duo/duo-3.jpg"
                   alt="Collaboration session"
                   fill
                   className="object-contain"
@@ -122,7 +122,7 @@ export default function AboutUs() {
               <div className="w-48 h-48 rounded-xl overflow-hidden">
                 <div className="relative w-full h-full scale-150">
                   <Image
-                    src="/Berhan.jpeg"
+                    src="./Berhan.jpeg"
                     alt="Berhan Berk Akgün"
                     fill
                     className="object-cover rounded-xl"
@@ -148,7 +148,7 @@ export default function AboutUs() {
           >
             <div className="relative mb-6">
               <div className="w-48 h-48 rounded-xl overflow-hidden">
-                <Image src="/Enes.jpeg" alt="Enes Bakıroğlu" fill className="object-cover rounded-xl" />
+                <Image src="./Enes.jpeg" alt="Enes Bakıroğlu" fill className="object-cover rounded-xl" />
               </div>
               <div className="absolute -bottom-3 -right-3 w-12 h-12 rounded-full bg-hot-pink flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-background" />
