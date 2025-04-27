@@ -83,7 +83,7 @@ export default function AboutUs() {
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300 mx-auto w-full max-w-2xl">
               <div className="relative" style={{ aspectRatio: '4/3' }}>
                 <Image
-                  src="/duo/duo-3.jpg"
+                  src="./duo/duo-3.jpg"
                   alt="Collaboration session"
                   fill
                   className="object-contain"
@@ -122,7 +122,7 @@ export default function AboutUs() {
               <div className="w-48 h-48 rounded-xl overflow-hidden">
                 <div className="relative w-full h-full scale-150">
                   <Image
-                    src="/Berhan.jpeg"
+                    src="/Berhan.JPEG"
                     alt="Berhan Berk Akgün"
                     fill
                     className="object-cover rounded-xl"
