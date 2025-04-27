@@ -32,7 +32,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-12">
             <div className="rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <Image
-                src="/duo/duo-1.jpg"
+                src="https://github.com/ensbakirog/Duo_Portfolio/tree/main/public/duo/duo-1.jpg"
                 alt="The Duo working together"
                 width={500}
                 height={300}
