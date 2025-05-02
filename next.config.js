@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  // Only use basePath for GitHub Pages deployment, not for custom domain
-  basePath: process.env.GITHUB_ACTIONS ? '/Duo_Portfolio' : '',
-  // For custom domain deployments, ensure images work correctly
+  output: 'export',  // Static HTML export
   images: {
-    unoptimized: true,
+    unoptimized: true,  // Required for static export
   },
-  // This helps resolve the issue with trailing slashes in routes
-  trailingSlash: true,
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
+  basePath: '',
 }
 
 module.exports = nextConfig

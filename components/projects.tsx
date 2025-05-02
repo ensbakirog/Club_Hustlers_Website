@@ -27,7 +27,7 @@ export default function Projects() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "LuckFlix",
+      title: "ClupHustlers",
       description: "A movie discovery app that helps users find their next favorite film with a spin of luck feature and genre-based recommendations.",
       image: "./luckflix-project.png",
       tags: ["Flutter", "Dart", "TMDB API"],

@@ -100,7 +100,7 @@ export default function AboutUs() {
           </p>
 
           <p className="text-lg text-center mb-12 text-muted-foreground">
-            Now, as a result of all these experiences, we are working on a project that excites us: **LuckFlix**. 🎬🍀
+            Now, as a result of all these experiences, we are working on a project that excites us: **ClupHustlers**. 🎬🍀
             This project is not just an idea; it is a step toward creating our own reality.
             Because we believe that limits are nothing but an illusion, and we are here to break that illusion. 🌀🔥
           </p>
