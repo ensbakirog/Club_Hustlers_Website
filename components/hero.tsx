@@ -10,11 +10,10 @@ import { useIsMobile } from "@/hooks/use-mobile"
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const tentacleRef = useRef<HTMLDivElement>(null)
   const mousePos = useRef({ x: -100, y: -100 })
   const interactionRadius = 100
   const isMobile = useIsMobile()
-  const [showVenomFace, setShowVenomFace] = useState(false)
+  // Removed showVenomFace state
 
   // Symbiote effect logic
   const drawSymbioteEffect = useCallback(() => {
@@ -143,41 +142,13 @@ export default function Hero() {
     }
   }, [])
 
-  // Move tentacle to follow mouse
-  const moveTentacle = (e: MouseEvent) => {
-    if (tentacleRef.current) {
-      const tentacle = tentacleRef.current
-      const rect = tentacle.getBoundingClientRect()
-      const tentacleX = rect.left + rect.width / 2
-      const tentacleY = rect.top + rect.height / 2
-      
-      // Calculate angle to mouse
-      const angle = Math.atan2(e.clientY - tentacleY, e.clientX - tentacleX)
-      
-      // Apply rotation
-      tentacle.style.transform = `rotate(${angle}rad) scaleX(${e.clientX < tentacleX ? -1 : 1})`
-      
-      // If mouse gets close to the tentacle, show the Venom face
-      const distance = Math.sqrt(
-        Math.pow(e.clientX - tentacleX, 2) + 
-        Math.pow(e.clientY - tentacleY, 2)
-      )
-      
-      if (distance < 200 && !showVenomFace) {
-        setShowVenomFace(true)
-      } else if (distance >= 200 && showVenomFace) {
-        setShowVenomFace(false)
-      }
-    }
-  }
-
   useEffect(() => {
     setMounted(true)
     let cleanupDraw: (() => void) | undefined
 
     const handleMouseMove = (event: MouseEvent) => {
       mousePos.current = { x: event.clientX, y: event.clientY }
-      moveTentacle(event)
+      // Removed venom face logic
     }
     
     window.addEventListener('mousemove', handleMouseMove)
@@ -228,49 +199,7 @@ export default function Hero() {
         className="absolute top-0 left-0 w-full h-full z-0"
       ></canvas>
       
-      {/* Venom tentacle following mouse */}
-      <div 
-        ref={tentacleRef}
-        className="absolute z-10 pointer-events-none w-40 h-40 opacity-70"
-        style={{
-          top: '30%',
-          right: '10%',
-          transformOrigin: '50% 100%'
-        }}
-      >
-        <div className="w-8 h-60 bg-gradient-to-t from-toxic-green to-transparent absolute top-0 left-1/2 -translate-x-1/2 rounded-full"></div>
-      </div>
-      
-      {/* Venom face that appears on interaction */}
-      <AnimatePresence>
-        {showVenomFace && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ type: "spring", damping: 10 }}
-            className="absolute z-20 pointer-events-none"
-            style={{ top: '30%', right: '10%' }}
-          >
-            <div className="relative w-40 h-40">
-              {/* Venom eyes */}
-              <div className="absolute top-1/4 left-1/4 w-8 h-16 bg-white rounded-full transform -rotate-12"></div>
-              <div className="absolute top-1/4 right-1/4 w-8 h-16 bg-white rounded-full transform rotate-12"></div>
-              
-              {/* Venom mouth */}
-              <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-24 h-12">
-                <div className="w-full h-full bg-white mask-venom-mouth flex justify-center items-end">
-                  <div className="w-3/4 h-1/2 flex justify-around items-end pb-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <div key={i} className="w-1 h-4 bg-toxic-green rounded-b-sm"></div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Removed Venom tentacle and Venom face elements */}
 
       {/* Container with content */}
       <div className="container relative z-10 px-4 md:px-6">
