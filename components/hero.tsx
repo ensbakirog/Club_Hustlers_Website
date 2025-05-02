@@ -283,7 +283,7 @@ export default function Hero() {
               className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-symbiote-blue to-toxic-green flex items-center justify-center relative overflow-hidden symbiote-border"
             >
               <div className="w-[95%] h-[95%] rounded-full bg-background flex items-center justify-center text-2xl font-bold font-orbitron relative z-10">
-                <span className="symbiote-text">Berhan</span>
+                <span className="symbiote-text">Berk</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-symbiote-blue via-toxic-green to-symbiote-blue bg-[length:200%_100%] animate-symbiote-flow opacity-40"></div>
             </motion.div>

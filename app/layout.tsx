@@ -11,7 +11,7 @@ const orbitron = Orbitron({
 })
 
 export const metadata = {
-  title: "Venom Portfolio | Club Hustlers",
+  title: "Club Hustlers",
   description: "A Venom-themed portfolio for two creative collaborators",
   generator: 'v0.dev'
 }
