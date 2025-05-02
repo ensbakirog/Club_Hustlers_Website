@@ -15,6 +15,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
+        // Add Venom-themed variant
+        symbiote: "border-toxic-green bg-toxic-green/10 text-toxic-green hover:bg-toxic-green/20 symbiote-text"
       },
     },
     defaultVariants: {

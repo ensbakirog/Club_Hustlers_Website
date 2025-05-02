@@ -19,13 +19,15 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        orbitron: ['var(--font-orbitron)'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        "background-alt": "hsl(var(--background-alt))",
-        "background-alt2": "hsl(var(--background-alt2))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -60,6 +62,12 @@ const config = {
         "neon-green": "hsl(var(--neon-green))",
         "hot-pink": "hsl(var(--hot-pink))",
         "vibrant-orange": "hsl(var(--vibrant-orange))",
+        // Venom theme colors
+        "symbiote-blue": "hsl(var(--symbiote-blue))",
+        "toxic-green": "hsl(var(--toxic-green))",
+        "venom-purple": "hsl(var(--venom-purple))",
+        "venom-black": "hsl(var(--venom-black))",
+        "venom-white": "hsl(var(--venom-white))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,10 +83,38 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "symbiote-pulse": {
+          "0%, 100%": { 
+            transform: "scale(1)",
+            opacity: "1"
+          },
+          "50%": { 
+            transform: "scale(1.05)",
+            opacity: "0.9"
+          }
+        },
+        "symbiote-flow": {
+          "0%": { 
+            backgroundPosition: "0% 50%" 
+          },
+          "50%": { 
+            backgroundPosition: "100% 50%" 
+          },
+          "100%": { 
+            backgroundPosition: "0% 50%" 
+          }
+        },
+        "tentacle-sway": {
+          "0%, 100%": { transform: "rotate(-5deg)" },
+          "50%": { transform: "rotate(5deg)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "symbiote-pulse": "symbiote-pulse 3s ease-in-out infinite",
+        "symbiote-flow": "symbiote-flow 15s ease infinite",
+        "tentacle-sway": "tentacle-sway 3s ease-in-out infinite"
       },
     },
   },

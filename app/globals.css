@@ -4,34 +4,47 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --background-alt: 240 10% 5.9%;
-    --background-alt2: 240 10% 7.9%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    
+    --card: 0 0% 3%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    
+    --popover: 0 0% 3%;
     --popover-foreground: 0 0% 98%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 3.7% 15.9%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 0 0% 12%;
     --accent-foreground: 0 0% 98%;
+    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 83.9%;
     --radius: 0.5rem;
 
-    /* Custom vibrant colors */
-    --electric-blue: 195 100% 50%;
-    --neon-green: 142 100% 50%;
-    --hot-pink: 330 100% 50%;
-    --vibrant-orange: 30 100% 50%;
+    /* Venom theme colors */
+    --venom-black: 0 0% 0%;
+    --venom-white: 0 0% 98%;
+    --symbiote-blue: 180 100% 40%;
+    --toxic-green: 140 100% 50%;
+    --venom-purple: 270 100% 50%;
+    
+    /* Original vibrant colors - repurposed */
+    --electric-blue: var(--symbiote-blue);
+    --neon-green: var(--toxic-green); 
+    --hot-pink: var(--venom-purple);
+    --vibrant-orange: 30 90% 50%;
   }
 }
 
@@ -41,7 +54,177 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter);
   }
+  
+  h1, h2, h3, .font-orbitron {
+    font-family: var(--font-orbitron);
+  }
+}
+
+/* Venom-specific utility classes */
+.text-symbiote-blue {
+  color: hsl(var(--symbiote-blue));
+}
+
+.text-toxic-green {
+  color: hsl(var(--toxic-green));
+}
+
+.bg-symbiote-blue {
+  background-color: hsl(var(--symbiote-blue));
+}
+
+.bg-toxic-green {
+  background-color: hsl(var(--toxic-green));
+}
+
+/* Special Venom elements */
+.mask-venom-mouth {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.venom-background {
+  background-color: black;
+  background-image: 
+    radial-gradient(circle at top right, rgba(20, 255, 140, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at bottom left, rgba(0, 150, 180, 0.1) 0%, transparent 30%);
+  min-height: 100vh;
+}
+
+.venom-tentacle {
+  position: absolute;
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(to top, hsl(var(--toxic-green)), transparent);
+  transform-origin: bottom center;
+  animation: tentacle-sway 3s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+@keyframes tentacle-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Symbiote effects */
+.symbiote-text {
+  text-shadow: 0 0 5px hsl(var(--toxic-green)), 
+               0 0 10px hsl(var(--toxic-green)/0.5);
+}
+
+.symbiote-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.symbiote-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, hsl(var(--toxic-green)), transparent);
+  transition: 0.5s;
+}
+
+.symbiote-border:hover::before {
+  left: 100%;
+}
+
+/* Additional Symbiote effects */
+.symbiote-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.symbiote-drip {
+  position: relative;
+  overflow: hidden;
+}
+
+.symbiote-drip::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, hsl(var(--toxic-green)/0.3));
+  animation: drip 3s ease-in-out infinite;
+}
+
+@keyframes drip {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Venom-specific image effects */
+.venom-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.venom-image-container img {
+  transition: all 0.5s ease;
+}
+
+.venom-image-container:hover img {
+  filter: contrast(1.2) saturate(1.5);
+}
+
+.venom-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.venom-image-container:hover .venom-image-overlay {
+  opacity: 1;
+}
+
+/* Venom teeth/claw effect */
+.venom-teeth {
+  --teeth-color: hsl(var(--toxic-green));
+  position: relative;
+  overflow: hidden;
+}
+
+.venom-teeth::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 8px,
+    var(--teeth-color) 8px,
+    var(--teeth-color) 12px
+  );
+  transform: translateY(5px);
+  transition: transform 0.3s ease;
+}
+
+.venom-teeth:hover::after {
+  transform: translateY(0);
 }
 
 /* Custom color utility classes */

@@ -2,17 +2,45 @@
 
 import type React from "react"
 
-import { useRef, useState } from "react"
-import { motion, useInView } from "framer-motion"
+import { useRef, useState, useEffect } from "react"
+import { motion, AnimatePresence } from "@/lib/motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Send, CheckCircle } from "lucide-react"
 
 export default function Contact() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const ref = useRef<HTMLDivElement>(null)
+  const [isInView, setIsInView] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [symbioteTentacles, setSymbioteTentacles] = useState(false)
+  const [inputFocus, setInputFocus] = useState<string | null>(null)
+  
+  // Handle intersection observer manually
+  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    const [entry] = entries
+    if (entry.isIntersecting) {
+      setIsInView(true)
+      setTimeout(() => setSymbioteTentacles(true), 1000)
+    }
+  }
+  
+  // Set up intersection observer
+  useEffect(() => {
+    if (!ref.current) return
+    
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1
+    })
+    
+    observer.observe(ref.current)
+    
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [ref])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,33 +51,69 @@ export default function Contact() {
   }
 
   const socialLinks = [
-    { icon: <Github className="h-5 w-5" />, url: "#", color: "hover:text-white" },
-    { icon: <Linkedin className="h-5 w-5" />, url: "#", color: "hover:text-electric-blue" },
+    { icon: <Github className="h-5 w-5" />, url: "#", color: "hover:text-venom-white" },
+    { icon: <Linkedin className="h-5 w-5" />, url: "#", color: "hover:text-symbiote-blue" },
   ]
 
+  // Generate symbiote tentacles
+  const renderSymbioteTentacles = () => {
+    if (!symbioteTentacles) return null;
+    
+    return Array.from({ length: 6 }).map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute"
+        style={{ 
+          background: `linear-gradient(to ${i % 2 === 0 ? 'left' : 'right'}, 
+                       hsl(var(--toxic-green)), transparent)`,
+          height: `${Math.random() * 2 + 1}px`,
+          width: '25%',
+          left: `${i * 20}%`,
+          bottom: 0,
+          opacity: 0
+        }}
+        animate={{
+          opacity: [0, 0.7, 0],
+          height: ['1px', '100px', '1px']
+        }}
+        transition={{
+          duration: Math.random() * 5 + 5,
+          delay: i * 0.5,
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
+      />
+    ));
+  };
+
   return (
-    <section id="contact" ref={ref} className="w-full py-20 bg-background">
-      <div className="container px-4 md:px-6">
+    <section id="contact" ref={ref} className="w-full py-20 bg-venom-black relative overflow-hidden">
+      {/* Background symbiote effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {renderSymbioteTentacles()}
+      </div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-vibrant-orange to-neon-green rounded-full mb-6"></div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Bond With Us</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-toxic-green to-symbiote-blue rounded-full mb-6"></div>
           <p className="max-w-[800px] text-muted-foreground">
-            Have a project in mind or want to collaborate? We'd love to hear from you!
+            Ready to form a symbiotic relationship? Let your ideas bond with our skills to create something powerful.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
+          {/* Contact Form with Symbiote Effects */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-background-alt p-8 rounded-xl border border-border"
+            className="bg-black p-8 rounded-xl border border-gray-800 hover:border-toxic-green/50 transition-all duration-500 relative overflow-hidden"
           >
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-12">
@@ -57,77 +121,194 @@ export default function Contact() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                  className="w-16 h-16 rounded-full bg-neon-green/20 flex items-center justify-center mb-6"
+                  className="w-16 h-16 rounded-full bg-toxic-green/20 flex items-center justify-center mb-6"
                 >
-                  <CheckCircle className="h-8 w-8 text-neon-green" />
+                  <CheckCircle className="h-8 w-8 text-toxic-green symbiote-text" />
                 </motion.div>
-                <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
+                <h3 className="text-xl font-bold mb-2 font-orbitron">Symbiosis Complete!</h3>
                 <p className="text-muted-foreground text-center">
-                  Thanks for reaching out. We'll get back to you as soon as possible.
+                  Your message has been consumed. We'll devour your request and respond soon.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <h3 className="text-xl font-bold mb-4 symbiote-text font-orbitron">Send Us a Message</h3>
                 <div className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Name
-                      </label>
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium font-orbitron">
+                      Name
+                    </label>
+                    <div className="relative">
                       <Input
                         id="name"
                         placeholder="Your name"
                         required
-                        className="bg-background border-border focus-visible:ring-electric-blue"
+                        className="bg-black border-gray-800 focus-visible:ring-toxic-green focus-visible:border-toxic-green transition-all duration-300"
+                        onFocus={() => setInputFocus("name")}
+                        onBlur={() => setInputFocus(null)}
                       />
+                      
+                      {/* Animated border effect when focused */}
+                      <AnimatePresence>
+                        {inputFocus === "name" && (
+                          <motion.div 
+                            className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <div className="absolute inset-0 rounded-md border border-toxic-green/50 shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium font-orbitron">
+                      Email
+                    </label>
+                    <div className="relative">
                       <Input
                         id="email"
                         type="email"
-                        placeholder="Your email"
+                        placeholder="your.email@example.com"
                         required
-                        className="bg-background border-border focus-visible:ring-electric-blue"
+                        className="bg-black border-gray-800 focus-visible:ring-toxic-green focus-visible:border-toxic-green transition-all duration-300"
+                        onFocus={() => setInputFocus("email")}
+                        onBlur={() => setInputFocus(null)}
                       />
+                      
+                      {/* Animated border effect when focused */}
+                      <AnimatePresence>
+                        {inputFocus === "email" && (
+                          <motion.div 
+                            className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <div className="absolute inset-0 rounded-md border border-toxic-green/50 shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
+                    <label htmlFor="subject" className="text-sm font-medium font-orbitron">
                       Subject
                     </label>
-                    <Input
-                      id="subject"
-                      placeholder="Project inquiry"
-                      className="bg-background border-border focus-visible:ring-electric-blue"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="subject"
+                        placeholder="Project inquiry"
+                        className="bg-black border-gray-800 focus-visible:ring-toxic-green focus-visible:border-toxic-green transition-all duration-300"
+                        onFocus={() => setInputFocus("subject")}
+                        onBlur={() => setInputFocus(null)}
+                      />
+                      
+                      {/* Animated border effect when focused */}
+                      <AnimatePresence>
+                        {inputFocus === "subject" && (
+                          <motion.div 
+                            className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <div className="absolute inset-0 rounded-md border border-toxic-green/50 shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
+                    <label htmlFor="message" className="text-sm font-medium font-orbitron">
                       Message
                     </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your project..."
-                      required
-                      className="min-h-[150px] bg-background border-border focus-visible:ring-electric-blue"
-                    />
+                    <div className="relative">
+                      <Textarea
+                        id="message"
+                        placeholder="Tell us about your project..."
+                        required
+                        className="min-h-[150px] bg-black border-gray-800 focus-visible:ring-toxic-green focus-visible:border-toxic-green transition-all duration-300"
+                        onFocus={() => setInputFocus("message")}
+                        onBlur={() => setInputFocus(null)}
+                      />
+                      
+                      {/* Animated border effect when focused */}
+                      <AnimatePresence>
+                        {inputFocus === "message" && (
+                          <motion.div 
+                            className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <div className="absolute inset-0 rounded-md border border-toxic-green/50 shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
+                            
+                            {/* Animated symbiote tendrils in textarea */}
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <motion.div
+                                key={i}
+                                className="absolute bottom-0 bg-toxic-green/30"
+                                style={{ 
+                                  width: '2px',
+                                  height: '20%',
+                                  left: `${(i + 1) * 16}%`,
+                                  filter: 'blur(1px)'
+                                }}
+                                animate={{
+                                  height: ['20%', '60%', '40%'],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  repeatType: "reverse",
+                                  delay: i * 0.2
+                                }}
+                              />
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-hot-pink to-vibrant-orange hover:from-vibrant-orange hover:to-hot-pink text-background transition-all duration-500"
+                  variant="toxicGlow"
+                  className="w-full font-orbitron transition-all duration-500 group relative overflow-hidden"
                 >
-                  Send Message
-                  <Send className="ml-2 h-4 w-4" />
+                  <span className="relative z-10">Send Message</span>
+                  <Send className="ml-2 h-4 w-4 relative z-10" />
+                  
+                  {/* Moving symbiote effect on hover */}
+                  <div className="absolute inset-0 w-full h-full scale-x-0 group-hover:scale-x-100 bg-toxic-green/20 transition-transform duration-500 origin-left"></div>
                 </Button>
               </form>
             )}
+            
+            {/* Symbiote effect in the corners */}
+            <div className="absolute top-0 left-0 w-10 h-10 pointer-events-none">
+              <svg width="40" height="40" viewBox="0 0 40 40">
+                <path 
+                  d="M0,0 L20,0 Q10,10 0,20 Z" 
+                  fill="hsla(140, 100%, 50%, 0.3)" 
+                />
+              </svg>
+            </div>
+            
+            <div className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none">
+              <svg width="40" height="40" viewBox="0 0 40 40">
+                <path 
+                  d="M40,40 L20,40 Q30,30 40,20 Z" 
+                  fill="hsla(140, 100%, 50%, 0.3)" 
+                />
+              </svg>
+            </div>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info with Symbiote Effects */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
@@ -135,32 +316,34 @@ export default function Contact() {
             className="flex flex-col space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-neon-green">
-                Let's Connect
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-symbiote-blue to-toxic-green font-orbitron symbiote-text">
+                Form A Bond
               </h3>
               <p className="text-muted-foreground mb-6">
-                Whether you're looking for a digital partnership or just want to say hello, we're here to collaborate on
-                your next big idea.
+                Whether you need web symbiotes or mobile hosts, we're ready to merge with your next big project.
               </p>
 
               <div className="space-y-6">
                 {/* First Email */}
-                <div>
+                <div className="group">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center group-hover:border-toxic-green transition-colors duration-300 relative overflow-hidden">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-electric-blue"
+                        className="h-5 w-5 text-toxic-green symbiote-text relative z-10"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                       </svg>
+                      
+                      {/* Animated background on hover */}
+                      <div className="absolute inset-0 bg-toxic-green/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">ensbakirog@gmail.com</p>
+                      <p className="font-medium symbiote-text text-sm">ensbakirog@gmail.com</p>
                     </div>
                   </div>
                   <div className="ml-12">
@@ -172,7 +355,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-white transition-colors duration-300"
+                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
                       >
                         <Github className="h-4 w-4" />
                       </motion.a>
@@ -182,7 +365,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-electric-blue transition-colors duration-300"
+                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
                       >
                         <Linkedin className="h-4 w-4" />
                       </motion.a>
@@ -191,22 +374,25 @@ export default function Contact() {
                 </div>
 
                 {/* Second Email */}
-                <div>
+                <div className="group">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-background-alt2 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center group-hover:border-toxic-green transition-colors duration-300 relative overflow-hidden">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-hot-pink"
+                        className="h-5 w-5 text-symbiote-blue symbiote-text relative z-10"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                       </svg>
+                      
+                      {/* Animated background on hover */}
+                      <div className="absolute inset-0 bg-symbiote-blue/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">berhanberkakgun@gmail.com</p>
+                      <p className="font-medium symbiote-text text-sm">berhanberkakgun@gmail.com</p>
                     </div>
                   </div>
                   <div className="ml-12">
@@ -218,7 +404,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-white transition-colors duration-300"
+                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
                       >
                         <Github className="h-4 w-4" />
                       </motion.a>
@@ -228,7 +414,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-background-alt2 flex items-center justify-center text-muted-foreground hover:text-electric-blue transition-colors duration-300"
+                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
                       >
                         <Linkedin className="h-4 w-4" />
                       </motion.a>
@@ -238,12 +424,20 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-gradient-to-br from-background-alt to-background border border-border">
-              <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-vibrant-orange">
-                Availability
-              </h3>
-              <p className="text-muted-foreground mb-4">Currently accepting new projects starting from:</p>
-              <p className="text-2xl font-bold">June 2025</p>
+            <div className="p-6 rounded-xl bg-gradient-to-br from-black to-black border border-gray-800 group hover:border-toxic-green transition-all duration-300 relative overflow-hidden">
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-toxic-green to-symbiote-blue font-orbitron">
+                  Available for Bonding
+                </h3>
+                <p className="text-muted-foreground mb-4">Currently accepting new hosts starting from:</p>
+                <p className="text-2xl font-bold font-orbitron symbiote-text">June 2025</p>
+              </div>
+              
+              {/* Background effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-toxic-green/5 to-symbiote-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Corner effect */}
+              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-toxic-green/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </motion.div>
         </div>
