@@ -232,7 +232,7 @@ export default function Hero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-electric-blue via-neon-green to-hot-pink">
-              Creative Duo:
+              Club Hustlers
             </span>
             <br className="hidden sm:inline" /> Design & Development
           </motion.h1>
