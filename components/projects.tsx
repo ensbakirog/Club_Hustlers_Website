@@ -126,7 +126,7 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Our Prey</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Our Projects</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-toxic-green to-venom-purple rounded-full mb-6"></div>
           <p className="max-w-[600px] text-muted-foreground">
             Digital conquests that demonstrate our symbiotic power across various technologies and platforms.

@@ -18,17 +18,17 @@ export default function Hero() {
   // Symbiote effect logic
   const drawSymbioteEffect = useCallback(() => {
     const canvas = canvasRef.current
-    if (!canvas) return () => {}
+    if (!canvas) return () => { }
 
     const ctx = canvas.getContext('2d')
-    if (!ctx) return () => {}
+    if (!ctx) return () => { }
 
     // Make canvas fill the screen
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
     // Symbiote tendrils/particles
-    const particles: {x: number; y: number; dirX: number; dirY: number; size: number; opacity: number}[] = []
+    const particles: { x: number; y: number; dirX: number; dirY: number; size: number; opacity: number }[] = []
     const particleCount = 100
 
     // Initialize particles
@@ -50,7 +50,7 @@ export default function Hero() {
       const deltaTime = timestamp - lastTime
       if (deltaTime > 30) { // Limit to ~30fps for performance
         lastTime = timestamp
-        
+
         // Clear canvas with semi-transparent black for trail effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
         ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -89,19 +89,19 @@ export default function Hero() {
           // Draw particle
           ctx.beginPath()
           const gradient = ctx.createRadialGradient(
-            particle.x, particle.y, 0, 
+            particle.x, particle.y, 0,
             particle.x, particle.y, particle.size
           )
-          
+
           // Decide color based on distance from mouse
           if (distance < interactionRadius) {
             gradient.addColorStop(0, `hsla(140, 100%, 50%, ${particle.opacity * 1.5})`) // Toxic green
             gradient.addColorStop(1, 'transparent')
           } else {
             gradient.addColorStop(0, `hsla(180, 100%, 40%, ${particle.opacity})`) // Symbiote blue
-            gradient.addColorStop(1, 'transparent')  
+            gradient.addColorStop(1, 'transparent')
           }
-          
+
           ctx.fillStyle = gradient
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
           ctx.fill()
@@ -116,13 +116,13 @@ export default function Hero() {
         // Draw tendrils connecting nearby particles
         ctx.beginPath()
         ctx.strokeStyle = 'rgba(140, 255, 200, 0.1)'
-        
+
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x
             const dy = particles[i].y - particles[j].y
             const distance = Math.sqrt(dx * dx + dy * dy)
-            
+
             if (distance < 100) {
               ctx.moveTo(particles[i].x, particles[i].y)
               ctx.lineTo(particles[j].x, particles[j].y)
@@ -150,7 +150,7 @@ export default function Hero() {
       mousePos.current = { x: event.clientX, y: event.clientY }
       // Removed venom face logic
     }
-    
+
     window.addEventListener('mousemove', handleMouseMove)
 
     // Delay initial draw to ensure layout is stable
@@ -198,7 +198,7 @@ export default function Hero() {
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full z-0"
       ></canvas>
-      
+
       {/* Removed Venom tentacle and Venom face elements */}
 
       {/* Container with content */}
@@ -248,7 +248,7 @@ export default function Hero() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-symbiote-blue via-toxic-green to-venom-purple symbiote-text">
               Club Hustlers
             </span>
-            <br className="hidden sm:inline" /> 
+            <br className="hidden sm:inline" />
             <span className="text-venom-white relative">
               Design & Development
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-toxic-green"></span>
@@ -261,9 +261,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="max-w-[800px] text-lg md:text-xl text-muted-foreground"
           >
-            We merge with your ideas like a symbiote, creating digital experiences that
-            <span className="text-toxic-green symbiote-text"> consume boundaries</span> and
-            <span className="text-symbiote-blue symbiote-text"> devour limitations</span>.
+            We don't follow the rules. The system's limits are our starting point. We break the ordinary, redefine digital, and transform design into thought. We're outside the Matrix — shaping the future with disruptive ideas.
           </motion.p>
 
           <motion.div
