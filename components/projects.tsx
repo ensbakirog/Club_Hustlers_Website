@@ -57,7 +57,7 @@ export default function Projects() {
       title: "LuckFlix",
       description: "LuckFlix uses a unique roulette-style system to help you discover movies and TV shows you'll love. No more endless scrolling!",
       image: "./luckflix-project.png",
-      tags: ["Flutter", "Dart", "TMDB API"],
+      tags: ["Flutter", "Dart", "TMDb API", "Android", "iOS",],
       contributors: ["both"],
       links: {
         demo: "#",
