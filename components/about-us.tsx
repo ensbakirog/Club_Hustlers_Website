@@ -165,7 +165,7 @@ export default function AboutUs() {
             and push beyond the boundaries imposed by the system.
           </motion.p>
 
-          {/* GIF section with symbiote effect - optimized to load conditionally */}
+          {/* GIF section with symbiote effect - removed the animated green lines */}
           <div className="grid grid-cols-1 gap-6 mb-12">
             <motion.div
               className="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 mx-auto w-full max-w-lg relative"
@@ -183,34 +183,6 @@ export default function AboutUs() {
 
                 {/* Symbiote effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-venom-black via-transparent to-toxic-green/30 mix-blend-overlay"></div>
-
-                {/* Animated symbiote tendrils - only render when symbioteActive is true */}
-                {symbioteActive && (
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    {symbioteEffectOptions.map((style, i) => (
-                      <motion.div
-                        key={`top-${i}`}
-                        className="absolute w-1 bg-gradient-to-b from-toxic-green to-transparent"
-                        style={{
-                          left: style.left,
-                          top: 0,
-                          height: '30%'
-                        }}
-                        animate={{
-                          height: ['15%', '35%', '15%'],
-                          opacity: [0.7, 1, 0.7]
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          repeatType: "reverse",
-                          delay: style.delay,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    ))}
-                  </div>
-                )}
               </div>
             </motion.div>
           </div>

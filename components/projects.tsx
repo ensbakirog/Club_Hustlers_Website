@@ -36,17 +36,17 @@ export default function Projects() {
       setTimeout(() => setSymbioteActive(true), 1500)
     }
   }
-  
+
   // Set up intersection observer
   useEffect(() => {
     if (!ref.current) return
-    
+
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: 0.1
     })
-    
+
     observer.observe(ref.current)
-    
+
     return () => {
       if (ref.current) {
         observer.unobserve(ref.current)
@@ -84,32 +84,7 @@ export default function Projects() {
 
   // Generate symbiote tendrils
   const renderSymbioteTendrils = () => {
-    if (!symbioteActive) return null;
-    
-    return Array.from({ length: 15 }).map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute bg-gradient-to-t from-toxic-green to-transparent"
-        style={{ 
-          width: `${Math.random() * 2 + 1}px`,
-          height: `${Math.random() * 20 + 10}vh`,
-          left: `${i * (100/15)}%`,
-          bottom: 0,
-          filter: 'blur(0.5px)',
-          opacity: Math.random() * 0.6 + 0.2,
-          zIndex: 0
-        }}
-        animate={{
-          height: [`${Math.random() * 10 + 10}vh`, `${Math.random() * 20 + 20}vh`],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{
-          duration: Math.random() * 5 + 7,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
-    ));
+    return null;
   };
 
   return (
@@ -118,7 +93,7 @@ export default function Projects() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {renderSymbioteTendrils()}
       </div>
-      
+
       <div className="container px-4 md:px-6 max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -144,15 +119,15 @@ export default function Projects() {
               onMouseEnter={() => setHoverProject(project.id)}
               onMouseLeave={() => setHoverProject(null)}
             >
-              {/* Project Image with Symbiote Effects */}
+              {/* Project Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   className="w-full h-full object-contain md:object-cover transition-all duration-500 group-hover:scale-105 mix-blend-luminosity group-hover:mix-blend-normal"
                 />
-                
-                {/* Animated overlay on hover */}
+
+                {/* Overlay on hover */}
                 <AnimatePresence>
                   {hoverProject === project.id && (
                     <motion.div
@@ -162,32 +137,11 @@ export default function Projects() {
                       transition={{ duration: 0.3 }}
                       className="absolute inset-0 bg-gradient-to-t from-venom-black via-transparent to-transparent pointer-events-none"
                     >
-                      {/* Animated symbiote tendrils */}
-                      <div className="absolute inset-0 overflow-hidden">
-                        {Array.from({ length: 8 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute bottom-0 bg-toxic-green"
-                            style={{ 
-                              width: '2px',
-                              height: '0%',
-                              left: `${(i + 0.5) * (100/8)}%`,
-                              opacity: 0.7
-                            }}
-                            animate={{ height: ['0%', '50%', '30%'] }}
-                            transition={{ 
-                              duration: 2,
-                              delay: i * 0.05,
-                              ease: "easeOut"
-                            }}
-                          />
-                        ))}
-                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Contributor Badge with Venom style */}
+                {/* Contributor Badge */}
                 {project.id !== 1 && (
                   <div
                     className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium text-venom-black symbiote-text ${getContributorColors(project.contributors)}`}
@@ -195,64 +149,30 @@ export default function Projects() {
                     {getContributorNames(project.contributors)}
                   </div>
                 )}
-
-                {/* Animated blood/symbiote drip effect */}
-                <AnimatePresence>
-                  {symbioteActive && (
-                    <motion.div
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      className="absolute -bottom-2 left-0 right-0 h-4 overflow-hidden"
-                    >
-                      <div className="flex justify-around">
-                        {Array.from({ length: 10 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="w-2 h-8 bg-toxic-green rounded-b-none rounded-t-full"
-                            style={{
-                              opacity: Math.random() * 0.7 + 0.3,
-                              filter: 'blur(1px)',
-                            }}
-                            animate={{ 
-                              height: [`${Math.random() * 5 + 5}px`, `${Math.random() * 15 + 10}px`],
-                              opacity: [0.3, 0.7, 0.3]
-                            }}
-                            transition={{
-                              duration: Math.random() * 3 + 2,
-                              repeat: Infinity,
-                              repeatType: "reverse",
-                              delay: i * 0.2
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
 
               {/* Project Content */}
               <div className="p-6 relative">
                 {/* Background symbiote pattern */}
                 <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0" 
+                  <div className="absolute inset-0"
                     style={{
                       backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300ff00' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E\")",
                     }}>
                   </div>
                 </div>
-                
+
                 <h3 className="text-xl font-bold mb-2 group-hover:text-toxic-green transition-colors duration-300 font-orbitron relative inline-block venom-teeth">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
 
-                {/* Tags with Venom Style */}
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
-                    <Badge 
-                      key={i} 
-                      variant="outline" 
+                    <Badge
+                      key={i}
+                      variant="outline"
                       className="bg-black border-toxic-green/30 text-xs text-toxic-green hover:bg-toxic-green/10"
                     >
                       {tag}
@@ -298,20 +218,20 @@ export default function Projects() {
               {/* Glowing Border Effect on Hover */}
               <AnimatePresence>
                 {hoverProject === project.id && (
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 pointer-events-none"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
                     <div className="absolute inset-0 border-2 border-toxic-green rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    {/* Corner accents like symbiote claws */}
+
+                    {/* Corner accents */}
                     <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-toxic-green rounded-tl-xl"></div>
                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-toxic-green rounded-tr-xl"></div>
                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-toxic-green rounded-bl-xl"></div>
                     <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-toxic-green rounded-br-xl"></div>
-                    
+
                     {/* Glow effect */}
                     <div className="absolute inset-0 rounded-xl shadow-[0_0_15px_rgba(0,255,0,0.3)]"></div>
                   </motion.div>
@@ -326,7 +246,7 @@ export default function Projects() {
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={symbioteActive ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-            transition={{ 
+            transition={{
               duration: 1,
               delay: 2,
               type: "spring",
