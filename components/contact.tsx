@@ -15,7 +15,7 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [symbioteTentacles, setSymbioteTentacles] = useState(false)
   const [inputFocus, setInputFocus] = useState<string | null>(null)
-  
+
   // Handle intersection observer manually
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
@@ -24,17 +24,17 @@ export default function Contact() {
       setTimeout(() => setSymbioteTentacles(true), 1000)
     }
   }
-  
+
   // Set up intersection observer
   useEffect(() => {
     if (!ref.current) return
-    
+
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: 0.1
     })
-    
+
     observer.observe(ref.current)
-    
+
     return () => {
       if (ref.current) {
         observer.unobserve(ref.current)
@@ -58,12 +58,12 @@ export default function Contact() {
   // Generate symbiote tentacles
   const renderSymbioteTentacles = () => {
     if (!symbioteTentacles) return null;
-    
+
     return Array.from({ length: 6 }).map((_, i) => (
       <motion.div
         key={i}
         className="absolute"
-        style={{ 
+        style={{
           background: `linear-gradient(to ${i % 2 === 0 ? 'left' : 'right'}, 
                        hsl(var(--toxic-green)), transparent)`,
           height: `${Math.random() * 2 + 1}px`,
@@ -92,7 +92,7 @@ export default function Contact() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {renderSymbioteTentacles()}
       </div>
-      
+
       <div className="container px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,10 +100,10 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Bond With Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Contact Us</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-toxic-green to-symbiote-blue rounded-full mb-6"></div>
           <p className="max-w-[800px] text-muted-foreground">
-            Ready to form a symbiotic relationship? Let your ideas bond with our skills to create something powerful.
+            Reach out to collaborate with us. We're ready to transform your ideas into impressive digital solutions.
           </p>
         </motion.div>
 
@@ -147,11 +147,11 @@ export default function Contact() {
                         onFocus={() => setInputFocus("name")}
                         onBlur={() => setInputFocus(null)}
                       />
-                      
+
                       {/* Animated border effect when focused */}
                       <AnimatePresence>
                         {inputFocus === "name" && (
-                          <motion.div 
+                          <motion.div
                             className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -177,11 +177,11 @@ export default function Contact() {
                         onFocus={() => setInputFocus("email")}
                         onBlur={() => setInputFocus(null)}
                       />
-                      
+
                       {/* Animated border effect when focused */}
                       <AnimatePresence>
                         {inputFocus === "email" && (
-                          <motion.div 
+                          <motion.div
                             className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -205,11 +205,11 @@ export default function Contact() {
                         onFocus={() => setInputFocus("subject")}
                         onBlur={() => setInputFocus(null)}
                       />
-                      
+
                       {/* Animated border effect when focused */}
                       <AnimatePresence>
                         {inputFocus === "subject" && (
-                          <motion.div 
+                          <motion.div
                             className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -234,24 +234,24 @@ export default function Contact() {
                         onFocus={() => setInputFocus("message")}
                         onBlur={() => setInputFocus(null)}
                       />
-                      
+
                       {/* Animated border effect when focused */}
                       <AnimatePresence>
                         {inputFocus === "message" && (
-                          <motion.div 
+                          <motion.div
                             className="absolute -inset-[1px] z-0 rounded-md pointer-events-none"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                           >
                             <div className="absolute inset-0 rounded-md border border-toxic-green/50 shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
-                            
+
                             {/* Animated symbiote tendrils in textarea */}
                             {Array.from({ length: 5 }).map((_, i) => (
                               <motion.div
                                 key={i}
                                 className="absolute bottom-0 bg-toxic-green/30"
-                                style={{ 
+                                style={{
                                   width: '2px',
                                   height: '20%',
                                   left: `${(i + 1) * 16}%`,
@@ -281,28 +281,28 @@ export default function Contact() {
                 >
                   <span className="relative z-10">Send Message</span>
                   <Send className="ml-2 h-4 w-4 relative z-10" />
-                  
+
                   {/* Moving symbiote effect on hover */}
                   <div className="absolute inset-0 w-full h-full scale-x-0 group-hover:scale-x-100 bg-toxic-green/20 transition-transform duration-500 origin-left"></div>
                 </Button>
               </form>
             )}
-            
+
             {/* Symbiote effect in the corners */}
             <div className="absolute top-0 left-0 w-10 h-10 pointer-events-none">
               <svg width="40" height="40" viewBox="0 0 40 40">
-                <path 
-                  d="M0,0 L20,0 Q10,10 0,20 Z" 
-                  fill="hsla(140, 100%, 50%, 0.3)" 
+                <path
+                  d="M0,0 L20,0 Q10,10 0,20 Z"
+                  fill="hsla(140, 100%, 50%, 0.3)"
                 />
               </svg>
             </div>
-            
+
             <div className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none">
               <svg width="40" height="40" viewBox="0 0 40 40">
-                <path 
-                  d="M40,40 L20,40 Q30,30 40,20 Z" 
-                  fill="hsla(140, 100%, 50%, 0.3)" 
+                <path
+                  d="M40,40 L20,40 Q30,30 40,20 Z"
+                  fill="hsla(140, 100%, 50%, 0.3)"
                 />
               </svg>
             </div>
@@ -317,10 +317,10 @@ export default function Contact() {
           >
             <div>
               <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-symbiote-blue to-toxic-green font-orbitron symbiote-text">
-                Form A Bond
+                Get in Touch
               </h3>
               <p className="text-muted-foreground mb-6">
-                Whether you need web symbiotes or mobile hosts, we're ready to merge with your next big project.
+                Whether you need web development or mobile solutions, we're ready to collaborate on your next big project.
               </p>
 
               <div className="space-y-6">
@@ -337,7 +337,7 @@ export default function Contact() {
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                       </svg>
-                      
+
                       {/* Animated background on hover */}
                       <div className="absolute inset-0 bg-toxic-green/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
                     </div>
@@ -386,7 +386,7 @@ export default function Contact() {
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                       </svg>
-                      
+
                       {/* Animated background on hover */}
                       <div className="absolute inset-0 bg-symbiote-blue/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
                     </div>
@@ -432,10 +432,10 @@ export default function Contact() {
                 <p className="text-muted-foreground mb-4">Currently accepting new hosts starting from:</p>
                 <p className="text-2xl font-bold font-orbitron symbiote-text">June 2025</p>
               </div>
-              
+
               {/* Background effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-toxic-green/5 to-symbiote-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Corner effect */}
               <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-toxic-green/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>

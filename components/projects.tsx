@@ -99,7 +99,7 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Our Projects</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-toxic-green to-venom-purple rounded-full mb-6"></div>
           <p className="max-w-[600px] text-muted-foreground">
-            Digital conquests that demonstrate our symbiotic power across various technologies and platforms.
+            Explore our innovative digital creations that push boundaries and showcase our technical expertise across platforms and technologies.
           </p>
         </motion.div>
 
@@ -117,7 +117,7 @@ export default function Projects() {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-contain md:object-cover transition-all duration-500 group-hover:scale-105 mix-blend-luminosity group-hover:mix-blend-normal"
+                  className="w-full h-full object-contain md:object-cover transition-all duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0"
                 />
 
                 {/* Contributor Badge */}
@@ -131,12 +131,12 @@ export default function Projects() {
               </div>
 
               {/* Project Content */}
-              <div className="p-6 relative">
+              <div className="p-6 relative transition-colors duration-300">
                 {/* Project Title */}
-                <h3 className="text-xl font-bold mb-2 group-hover:text-[#FFC000] transition-colors duration-300 font-orbitron relative inline-block">
+                <h3 className="text-xl font-bold mb-2 text-gray-400 group-hover:text-[#FFC000] transition-colors duration-300 font-orbitron relative inline-block">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                <p className="text-gray-500 group-hover:text-muted-foreground text-sm mb-4 transition-colors duration-300">{project.description}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -144,7 +144,7 @@ export default function Projects() {
                     <Badge
                       key={i}
                       variant="outline"
-                      className="bg-black border-[#FFC000]/30 text-xs text-[#FFC000] hover:bg-[#FFC000]/10"
+                      className="bg-black border-gray-700 group-hover:border-[#FFC000]/30 text-xs text-gray-400 group-hover:text-[#FFC000] hover:bg-[#FFC000]/10 transition-colors duration-300"
                     >
                       {tag}
                     </Badge>
@@ -157,7 +157,7 @@ export default function Projects() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-[#FFC000] hover:text-[#FFC000] hover:bg-[#FFC000]/10 font-bold tracking-wide text-base"
+                      className="text-gray-400 group-hover:text-[#FFC000] hover:text-[#FFC000] hover:bg-[#FFC000]/10 font-bold tracking-wide text-base transition-colors duration-300"
                       onClick={() => window.open("https://luckflix.com", "_blank")}
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />

@@ -13,7 +13,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Berhan Berk Akgün & Enes Bakıroğlu
+              Club Hustlers
             </motion.div>
           </div>
 
