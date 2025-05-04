@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from "react"
 import { motion, AnimatePresence } from "@/lib/motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, FileText } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 
 type Project = {
   id: number
@@ -16,15 +16,12 @@ type Project = {
   contributors: ("name1" | "name2" | "both")[]
   links: {
     demo?: string
-    code?: string
-    case?: string
   }
 }
 
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
-  const [hoverProject, setHoverProject] = useState<number | null>(null)
   const [symbioteActive, setSymbioteActive] = useState(false)
 
   // Handle intersection observer manually
@@ -57,15 +54,13 @@ export default function Projects() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "VenomFlix",
+      title: "LuckFlix",
       description: "A movie discovery symbiote that devours boring recommendations and injects thrill into your viewing experience with a venomous twist.",
       image: "./luckflix-project.png",
       tags: ["Flutter", "Dart", "TMDB API"],
       contributors: ["both"],
       links: {
         demo: "#",
-        code: "#",
-        case: "#",
       },
     }
   ]
@@ -116,8 +111,6 @@ export default function Projects() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
               className="group relative bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-toxic-green transition-all duration-300"
-              onMouseEnter={() => setHoverProject(project.id)}
-              onMouseLeave={() => setHoverProject(null)}
             >
               {/* Project Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
@@ -126,20 +119,6 @@ export default function Projects() {
                   alt={project.title}
                   className="w-full h-full object-contain md:object-cover transition-all duration-500 group-hover:scale-105 mix-blend-luminosity group-hover:mix-blend-normal"
                 />
-
-                {/* Overlay on hover */}
-                <AnimatePresence>
-                  {hoverProject === project.id && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-gradient-to-t from-venom-black via-transparent to-transparent pointer-events-none"
-                    >
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
                 {/* Contributor Badge */}
                 {project.id !== 1 && (
@@ -153,16 +132,8 @@ export default function Projects() {
 
               {/* Project Content */}
               <div className="p-6 relative">
-                {/* Background symbiote pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0"
-                    style={{
-                      backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300ff00' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E\")",
-                    }}>
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold mb-2 group-hover:text-toxic-green transition-colors duration-300 font-orbitron relative inline-block venom-teeth">
+                {/* Project Title */}
+                <h3 className="text-xl font-bold mb-2 group-hover:text-toxic-green transition-colors duration-300 font-orbitron relative inline-block">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
@@ -192,51 +163,11 @@ export default function Projects() {
                       Live Prey
                     </Button>
                   )}
-                  {project.links.code && (
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-symbiote-blue hover:text-symbiote-blue hover:bg-symbiote-blue/10 symbiote-text"
-                    >
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Button>
-                  )}
-                  {project.links.case && (
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-venom-purple hover:text-venom-purple hover:bg-venom-purple/10 symbiote-text"
-                    >
-                      <FileText className="h-4 w-4 mr-1" />
-                      Case Study
-                    </Button>
-                  )}
                 </div>
               </div>
 
-              {/* Glowing Border Effect on Hover */}
-              <AnimatePresence>
-                {hoverProject === project.id && (
-                  <motion.div
-                    className="absolute inset-0 pointer-events-none"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <div className="absolute inset-0 border-2 border-toxic-green rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-toxic-green rounded-tl-xl"></div>
-                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-toxic-green rounded-tr-xl"></div>
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-toxic-green rounded-bl-xl"></div>
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-toxic-green rounded-br-xl"></div>
-
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-xl shadow-[0_0_15px_rgba(0,255,0,0.3)]"></div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Simple border effect on hover (without animations) */}
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-toxic-green rounded-xl transition-colors duration-300 pointer-events-none"></div>
             </motion.div>
           ))}
         </div>
