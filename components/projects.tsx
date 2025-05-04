@@ -110,7 +110,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
-              className="group relative bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-toxic-green transition-all duration-300"
+              className="group relative bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-[#FFC000] transition-all duration-300"
             >
               {/* Project Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
@@ -133,7 +133,7 @@ export default function Projects() {
               {/* Project Content */}
               <div className="p-6 relative">
                 {/* Project Title */}
-                <h3 className="text-xl font-bold mb-2 group-hover:text-toxic-green transition-colors duration-300 font-orbitron relative inline-block">
+                <h3 className="text-xl font-bold mb-2 group-hover:text-[#FFC000] transition-colors duration-300 font-orbitron relative inline-block">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
@@ -144,7 +144,7 @@ export default function Projects() {
                     <Badge
                       key={i}
                       variant="outline"
-                      className="bg-black border-toxic-green/30 text-xs text-toxic-green hover:bg-toxic-green/10"
+                      className="bg-black border-[#FFC000]/30 text-xs text-[#FFC000] hover:bg-[#FFC000]/10"
                     >
                       {tag}
                     </Badge>
@@ -157,17 +157,18 @@ export default function Projects() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-toxic-green hover:text-toxic-green hover:bg-toxic-green/10 symbiote-text"
+                      className="text-[#FFC000] hover:text-[#FFC000] hover:bg-[#FFC000]/10 font-bold tracking-wide text-base"
+                      onClick={() => window.open("https://luckflix.com", "_blank")}
                     >
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Live Prey
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Visit Site
                     </Button>
                   )}
                 </div>
               </div>
 
               {/* Simple border effect on hover (without animations) */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-toxic-green rounded-xl transition-colors duration-300 pointer-events-none"></div>
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FFC000] rounded-xl transition-colors duration-300 pointer-events-none"></div>
             </motion.div>
           ))}
         </div>
@@ -187,8 +188,8 @@ export default function Projects() {
             <svg viewBox="0 0 200 200" className="w-full h-full">
               <defs>
                 <linearGradient id="symbioteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="hsla(140, 100%, 50%, 0.6)" />
-                  <stop offset="100%" stopColor="hsla(180, 100%, 40%, 0.6)" />
+                  <stop offset="0%" stopColor="#FFC000" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#FFC000" stopOpacity="0.6" />
                 </linearGradient>
               </defs>
               <motion.path
