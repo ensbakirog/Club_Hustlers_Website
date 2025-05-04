@@ -172,39 +172,6 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
-
-        {/* Extra Symbiote Elements */}
-        <div className="absolute -bottom-20 right-0 w-60 h-60 opacity-30 hidden md:block">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={symbioteActive ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-            transition={{
-              duration: 1,
-              delay: 2,
-              type: "spring",
-              damping: 12
-            }}
-          >
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <defs>
-                <linearGradient id="symbioteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#FFC000" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#FFC000" stopOpacity="0.6" />
-                </linearGradient>
-              </defs>
-              <motion.path
-                d="M20,100 Q60,20 100,100 T180,100"
-                stroke="url(#symbioteGradient)"
-                strokeWidth="5"
-                fill="transparent"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={symbioteActive ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 2, delay: 2.2 }}
-              />
-            </svg>
-          </motion.div>
-        </div>
       </div>
     </section>
   )
