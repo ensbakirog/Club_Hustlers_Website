@@ -94,7 +94,7 @@ export default function AboutUs() {
           transition={{ duration: 0.6 }} // Reduced from 0.8
           className="flex flex-col items-center text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">The Symbiotes</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-orbitron symbiote-text">Our Journey</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-symbiote-blue to-toxic-green rounded-full"></div>
         </motion.div>
 
