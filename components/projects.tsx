@@ -55,7 +55,7 @@ export default function Projects() {
     {
       id: 1,
       title: "LuckFlix",
-      description: "A movie discovery symbiote that devours boring recommendations and injects thrill into your viewing experience with a venomous twist.",
+      description: "LuckFlix uses a unique roulette-style system to help you discover movies and TV shows you'll love. No more endless scrolling!",
       image: "./luckflix-project.png",
       tags: ["Flutter", "Dart", "TMDB API"],
       contributors: ["both"],
