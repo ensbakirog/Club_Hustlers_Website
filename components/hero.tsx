@@ -204,45 +204,10 @@ export default function Hero() {
       {/* Container with content */}
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-symbiote-blue to-toxic-green flex items-center justify-center relative overflow-hidden symbiote-border"
-            >
-              <div className="w-[95%] h-[95%] rounded-full bg-background flex items-center justify-center text-2xl font-bold font-orbitron relative z-10">
-                <span className="symbiote-text">Berk</span>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-symbiote-blue via-toxic-green to-symbiote-blue bg-[length:200%_100%] animate-symbiote-flow opacity-40"></div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl font-bold text-toxic-green symbiote-text"
-            >
-              &amp;
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-toxic-green to-venom-purple flex items-center justify-center relative overflow-hidden symbiote-border"
-            >
-              <div className="w-[95%] h-[95%] rounded-full bg-background flex items-center justify-center text-2xl font-bold font-orbitron flex-col relative z-10">
-                <span className="symbiote-text">Enes</span>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-toxic-green via-venom-purple to-toxic-green bg-[length:200%_100%] animate-symbiote-flow opacity-40"></div>
-            </motion.div>
-          </div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter font-orbitron"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-symbiote-blue via-toxic-green to-venom-purple symbiote-text">
@@ -258,7 +223,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-[800px] text-lg md:text-xl text-muted-foreground"
           >
             We don't follow the rules. The system's limits are our starting point. We break the ordinary, redefine digital, and transform design into thought. We're outside the Matrix — shaping the future with disruptive ideas.
@@ -267,7 +232,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             whileHover={{ scale: 1.05 }}
           >
             <Button
