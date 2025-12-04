@@ -324,101 +324,57 @@ export default function Contact() {
               </p>
 
               <div className="space-y-6">
-                {/* First Email */}
+                {/* Enes Bakıroğlu */}
                 <div className="group">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center group-hover:border-toxic-green transition-colors duration-300 relative overflow-hidden">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-toxic-green symbiote-text relative z-10"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                      </svg>
-
-                      {/* Animated background on hover */}
-                      <div className="absolute inset-0 bg-toxic-green/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium symbiote-text text-sm">ensbakirog@gmail.com</p>
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h4 className="text-sm font-bold mb-2">Follow Me</h4>
-                    <div className="flex space-x-3">
-                      <motion.a
-                        href="https://github.com/ensbakirog"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ y: -5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
-                      >
-                        <Github className="h-4 w-4" />
-                      </motion.a>
-                      <motion.a
-                        href="https://www.linkedin.com/in/enesbakiroglu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ y: -5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
-                      >
-                        <Linkedin className="h-4 w-4" />
-                      </motion.a>
-                    </div>
+                  <h4 className="text-lg font-bold mb-3 font-orbitron text-toxic-green">Enes Bakıroğlu</h4>
+                  <div className="flex space-x-3">
+                    <motion.a
+                      href="https://github.com/ensbakirog"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
+                    >
+                      <Github className="h-5 w-5" />
+                    </motion.a>
+                    <motion.a
+                      href="https://www.linkedin.com/in/enesbakiroglu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </motion.a>
                   </div>
                 </div>
 
-                {/* Second Email */}
+                {/* Berhan Berk Akgün */}
                 <div className="group">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center group-hover:border-toxic-green transition-colors duration-300 relative overflow-hidden">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-symbiote-blue symbiote-text relative z-10"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                      </svg>
-
-                      {/* Animated background on hover */}
-                      <div className="absolute inset-0 bg-symbiote-blue/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-bottom"></div>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium symbiote-text text-sm">berhanberkakgun@gmail.com</p>
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h4 className="text-sm font-bold mb-2">Follow Me</h4>
-                    <div className="flex space-x-3">
-                      <motion.a
-                        href="https://github.com/99berk"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ y: -5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
-                      >
-                        <Github className="h-4 w-4" />
-                      </motion.a>
-                      <motion.a
-                        href="https://www.linkedin.com/in/berhanberkakgun"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ y: -5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="w-8 h-8 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
-                      >
-                        <Linkedin className="h-4 w-4" />
-                      </motion.a>
-                    </div>
+                  <h4 className="text-lg font-bold mb-3 font-orbitron text-symbiote-blue">Berhan Berk Akgün</h4>
+                  <div className="flex space-x-3">
+                    <motion.a
+                      href="https://github.com/99berk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-venom-white hover:border-toxic-green transition-colors duration-300"
+                    >
+                      <Github className="h-5 w-5" />
+                    </motion.a>
+                    <motion.a
+                      href="https://www.linkedin.com/in/berhanberkakgun"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="w-10 h-10 rounded-full bg-black border border-gray-800 flex items-center justify-center text-muted-foreground hover:text-symbiote-blue hover:border-toxic-green transition-colors duration-300"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </motion.a>
                   </div>
                 </div>
               </div>
